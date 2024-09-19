@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --cor-letra: #eee;
+    --tamanho-fonte: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-family: "Poppins";
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: var(--cor-letra);
+    font-size: 15px;
+}
+
+.header {
+    max-width: 80%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    margin: auto;
+}
+
+.header a {
+    color: #eee;
+    margin-right: 40px;
+    font-weight: 300;
+    transition: all .2s ease-in-out;
+}
+
+.header a:hover {
+    font-size: 20px;
+    transition: all .2s ease-in-out;
+
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    margin-top: -50px;
+    overflow: hidden;
+}
+
+.container .list .list-itens {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.list-itens img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: brightness(50%);
+}
+
+.container .list .list-itens .content {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    padding-right: 30%;
+    width: 80%;
+    color: var(--cor-letra);
+    text-shadow: 0 5px 10px #000;
+}
+
+.title {
+    font-size: 5em;
+    font-weight: 700;
+    line-height: 1.3em;
+}
+
+.description {
+    font-size: 1.2em;
+}
+
+.buttons-list {
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 50px;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.buttons-list button {
+    border: none;
+    background-color: #eee;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 15px;
+    transition: all .2s ease-in-out;
+}
+
+.buttons-list button:nth-child(2) {
+    background-color: transparent;
+    color: var(--cor-letra);
+    border: 1px solid #eee;
+}
+
+.buttons-list button:nth-child(1):hover {
+    border: 1px #eee solid;
+    background-color: transparent;
+    color: var(--cor-letra);
+    transition: all .2s ease-in-out;
+    transform: scale(0.95);
+}
+
+.buttons-list button:nth-child(2):hover {
+    border: none;
+    background-color: #eee;
+    color: #000;
+    transition: all .2s ease-in-out;
+    transform: scale(0.95);
+}
+
+.container .card {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    display: flex;
+    gap: 20px;
+}
+
+.container .card .card-itens {
+    width: 135px;
+    height: 200px;
+    position: relative;
+    z-index: 3;
+}
+
+.card-itens img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    filter: brightness(80%);
+}
+
+.card .content {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.container .arrows {
+    display: flex;
+    position: absolute;
+    bottom: 120px;
+    left: 10%;
+    width: 300px;
+    align-items: center;
+    gap: 10px;
+}
+
+.container .arrows button {
+    border-radius: 10px;
+    border: none;
+    padding: 12px 17px;
+    cursor: pointer;
+    background-color: #eee4;
+    color: #eee;
+    font-weight: 700;
+    font-size: 1.3em;
+    transition: all .2s ease-in-out;
+}
+
+.arrows button:hover {
+    background-color: #eee;
+    color: #000;
+    transition: all .2s ease-in-out;
+}
+
+.container.next .card {
+    animation: SideSlide .5s ease-in-out forwards;
+}
+
+@keyframes SideSlide {
+    from {
+        transform: translateX(150px);
+    }
+}
+
+.container.next .card:nth-last-child(1) {
+    animation: LastCard .5s linear 1 forwards;
+}
+
+@keyframes LastCard {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+.container .list .list-itens:nth-last-child(1) .content .title,
+.container .list .list-itens:nth-last-child(1) .content .description,
+.container .list .list-itens:nth-last-child(1) .content .buttons-list {
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: ShowContent .5s linear 1 forwards;
+}
+
+@keyframes ShowContent {
+    to {
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+.container.next .list-itens:nth-last-child(1) img {
+    width: 135px;
+    height: 200px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 30px;
+    animation: ShowMainImg 0.5s ease-in-out 1 forwards;
+}
+
+@keyframes ShowMainImg {
+    to {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+.container.back .list-itens:nth-child(1) img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    animation: HideMainImg 0.5s ease-in-out 1 forwards;
+    z-index: 2;
+}
+
+@keyframes HideMainImg {
+    to {
+        width: 135px;
+        height: 200px;
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        border-radius: 30px;
+    }
+}
